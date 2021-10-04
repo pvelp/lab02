@@ -23,9 +23,36 @@ class Cache{
   void reverse_test();
   void random_test();
 
+
  public:
   Cache(int len);
   void experiment();
-
+  double get_res_dir_test();
+  double get_res_rev_test();
+  double get_res_rand_test();
+//  void print_results();
 };
+
+
+//void print_result(Cache val1){
+//  std::string res = R"(investigaion:
+//travel_order: "direction"
+//  experiments:
+//    -experiment:
+//      number: 1
+//    input_data:
+//      buffer_size: "1mb"
+//    results:
+//      duration: )";
+//}
+
 #endif // INCLUDE_HEADER_HPP_
+//  investigaion:
+//    travel_order: "direction"
+//      experiments:
+//        -experiment:
+//          number: 1
+//        input_data:
+//          buffer_size: "1mb"
+//        results:
+//          duration: "1ns"

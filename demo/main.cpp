@@ -12,6 +12,14 @@
 
 
 int main() {
+  Cache test1 = Cache(3145728);
+  test1.experiment();
+  std::cout << test1.get_res_dir_test() << " | " << test1.get_res_rev_test()
+  << " | " << test1.get_res_rand_test();
+
+
+
+
   // apple silicon 2 уровня кэша, первый = 128кб, второй = 8мб
   // 64kb < 128kb < 256kb << 512kb << 1Mb << 2mb << 4mb << 8mb << 12mb
 //  [[maybe_unused]] int len1 = 16384;    // 64kb
