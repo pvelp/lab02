@@ -24,53 +24,67 @@ void Cache::warming_up() {
 
 void Cache::direction_test() {
   [[maybe_unused]]int k = 0;
-  for (int i = 0; i < this->_len; i += 16) {
-    k = _arr[i];
+  clock_t start;
+  start = clock();
+  for (int j = 0; j < 1000; ++j){
+    for (int i = 0; i < this->_len; i += 16) {
+      k = _arr[i];
+    }
   }
+  _result_direction_test = (double)(clock() - start) / CLOCKS_PER_SEC;
 }
 
 void Cache::reverse_test() {
   [[maybe_unused]]int k = 0;
-  for (int i = this->_len-1; i >= 0; i-=16){
-    k = _arr[i];
+  clock_t start;
+  start = clock();
+  for (int j = 0; j < 1000; ++j){
+    for (int i = this->_len-1; i >= 0; i-=16){
+      k = _arr[i];
+    }
+  }
+  _result_reverse_test = (double)(clock() - start) / CLOCKS_PER_SEC;
+}
+
+void shuffle(int *array, size_t n)
+{
+  if (n > 1)
+  {
+    size_t i;
+    for (i = 0; i < n - 1; i++)
+    {
+      size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
+      int t = array[j];
+      array[j] = array[i];
+      array[i] = t;
+    }
   }
 }
 
 void Cache::random_test() {
-  [[maybe_unused]]int k = 0;
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<>dist(1, this->_len);
-  for (int i = 0; i < this->_len; i += dist(gen) / 16 + (dist(gen) % 16)){
-    k = _arr[i];
+  int* val = (int*)malloc(sizeof (int) * (_len/16));
+  for (int i = 0; i < _len; i+=16){
+    val[i] = i;
   }
+  [[maybe_unused]]int k;
+  shuffle(val, _len/16);
+  clock_t start;
+  start = clock();
+  for (int j = 0; j < 1000; ++j){
+    for (int i = 0; i < this->_len; ++i){
+      k = _arr[val[i]];
+    }
+  }
+    _result_random_test = (double) (clock() - start) / CLOCKS_PER_SEC;
 }
 
 void Cache::experiment() {
   this->_arr = (int*)malloc(sizeof(int) * this->_len);
   this->filling();
-  clock_t start1;
-  clock_t start2;
-  clock_t start3;
   this->warming_up();
-
-  start1 = clock();
-  for (int i = 0; i < 1000; ++i){
-    this->direction_test();
-  }
-  _result_direction_test = (double)(clock() - start1) / CLOCKS_PER_SEC;
-
-  start2 = clock();
-  for (int i = 0; i < 1000; ++i){
-    this->reverse_test();
-  }
-  _result_reverse_test = (double)(clock() - start2) / CLOCKS_PER_SEC;
-
-  start3 = clock();
-  for (int i = 0; i < 1000; ++i){
-    this->random_test();
-  }
-  _result_random_test = (double)(clock() - start3) / CLOCKS_PER_SEC;
+  this->direction_test();
+  this->reverse_test();
+  this->random_test();
 }
 
 double Cache::get_res_dir_test() const {

@@ -36,6 +36,7 @@ class Cache{
 //  void print_results();
 };
 
+void shuffle(int *array, size_t n);
 
 //void print_result(Cache val1){
 //  std::string res = R"(investigaion:
