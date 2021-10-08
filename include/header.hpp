@@ -1,4 +1,4 @@
-// Copyright 2020 Your Name <your_email>
+// Copyright 2021 pvelp <toschakovpv@yandex.ru>
 
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
@@ -8,6 +8,7 @@
 #include <ctime>
 #include <random>
 #include <cassert>
+#include <cmath>
 
 
 class Cache{
@@ -27,9 +28,11 @@ class Cache{
  public:
   Cache(int len);
   void experiment();
-  double get_res_dir_test();
-  double get_res_rev_test();
-  double get_res_rand_test();
+  [[nodiscard]]double  get_res_dir_test() const;
+  [[nodiscard]]double get_res_rev_test() const;
+  [[nodiscard]]double get_res_rand_test() const;
+  void delete_arr();
+
 //  void print_results();
 };
 
