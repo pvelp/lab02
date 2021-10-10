@@ -31,7 +31,8 @@ void Cache::direction_test() {
       k = _arr[i];
     }
   }
-  _result_direction_test = static_cast <double>(clock() - start) / CLOCKS_PER_SEC;
+  double res = static_cast <double>(clock() - start) / CLOCKS_PER_SEC;
+  _result_direction_test = res;
 }
 
 void Cache::reverse_test() {
@@ -53,7 +54,9 @@ void shuffle(int *array, size_t n)
     size_t i;
     for (i = 0; i < n - 1; i++)
     {
-      size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
+      std::mt19937 gen(time(nullptr));
+      std::uniform_int_distribution<> uid(0, n);
+      size_t j = uid(gen);
       int t = array[j];
       array[j] = array[i];
       array[i] = t;
@@ -75,7 +78,8 @@ void Cache::random_test() {
       k = _arr[val[i]];
     }
   }
-    _result_random_test = static_cast <double>(clock() - start) / CLOCKS_PER_SEC;
+    double res = static_cast <double>(clock() - start) / CLOCKS_PER_SEC;
+    _result_random_test = res;
 }
 
 void Cache::experiment() {
