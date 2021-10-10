@@ -4,7 +4,6 @@
 #define INCLUDE_HEADER_HPP_
 
 #include <iostream>
-#include <cstdlib>
 #include <ctime>
 #include <random>
 #include <cassert>
