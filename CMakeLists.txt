@@ -21,7 +21,7 @@ HunterGate(
 )
 
 # TODO: rename project and delete this comment
-project(template VERSION 0.1.0)
+project(lab02 VERSION 0.1.0)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
@@ -36,6 +36,7 @@ add_library(${PROJECT_NAME} STATIC
 
 add_executable(demo
   ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
