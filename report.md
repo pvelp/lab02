@@ -172,5 +172,6 @@
         - buffer_size: "12mb"
       - results:
         - duration: 7222ms
+
+![](images/pic.png)
         
-![](images/pic1.png)

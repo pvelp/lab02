@@ -65,7 +65,7 @@ void shuffle(int *array, size_t n)
 }
 
 void Cache::random_test() {
-  int* val = (int*)malloc(sizeof (int) * (_len/16));
+  int* val = reinterpret_cast<int*>(malloc(sizeof (int) * (_len/16)));
   for (int i = 0; i < _len; i+=16){
     val[i] = i;
   }
@@ -83,7 +83,7 @@ void Cache::random_test() {
 }
 
 void Cache::experiment() {
-  this->_arr = (int*)malloc(sizeof(int) * this->_len);
+  this->_arr = reinterpret_cast<int*>(malloc(sizeof(int) * this->_len));
   this->filling();
   this->warming_up();
   this->direction_test();
