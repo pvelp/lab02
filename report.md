@@ -1,18 +1,18 @@
 investigation:
-  travel_variant: direction
-  experiments:
-  - experiment:
-    number: 1                
-    input_data:                        
-      buffer_size: "64kb"               
-    results:                                       
-      duration: 2ms               
-  - experiment:                                      
-      number: 2                   
-      input_data:                                    
-        buffer_size: "128kb"                 
-      results:                                       
-        duration: 5ms
+  - travel_variant: direction
+    - experiments:
+    - experiment:
+      - number: 1                
+      - input_data:                        
+        - buffer_size: "64kb"               
+      - results:                                       
+        - duration: 2ms               
+    - experiment:                                      
+      - number: 2                   
+      - input_data:                                    
+        - buffer_size: "128kb"                 
+      - results:                                       
+        - duration: 5ms
   - experiment:
       number: 3
       input_data:
