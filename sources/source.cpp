@@ -3,9 +3,9 @@
 #include <header.hpp>
 
 Cache::Cache(int len): _len(len)
-                        ,_result_direction_test(0)
-                        ,_result_reverse_test(0)
-                        ,_result_random_test(0){}
+                        , _result_direction_test(0)
+                        , _result_reverse_test(0)
+                        , _result_random_test(0){}
 void Cache::filling() {
   std::random_device rd;
   std::mt19937 gen(rd());
@@ -31,7 +31,7 @@ void Cache::direction_test() {
       k = _arr[i];
     }
   }
-  _result_direction_test = (double)(clock() - start) / CLOCKS_PER_SEC;
+  _result_direction_test = static_cast <double>(clock() - start) / CLOCKS_PER_SEC;
 }
 
 void Cache::reverse_test() {
@@ -43,7 +43,7 @@ void Cache::reverse_test() {
       k = _arr[i];
     }
   }
-  _result_reverse_test = (double)(clock() - start) / CLOCKS_PER_SEC;
+  _result_reverse_test = static_cast <double>(clock() - start) / CLOCKS_PER_SEC;
 }
 
 void shuffle(int *array, size_t n)
@@ -75,7 +75,7 @@ void Cache::random_test() {
       k = _arr[val[i]];
     }
   }
-    _result_random_test = (double) (clock() - start) / CLOCKS_PER_SEC;
+    _result_random_test = static_cast <double>(clock() - start) / CLOCKS_PER_SEC;
 }
 
 void Cache::experiment() {

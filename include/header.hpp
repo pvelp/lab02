@@ -26,7 +26,7 @@ class Cache{
 
 
  public:
-  Cache(int len);
+  explicit Cache(int len);
   void experiment();
   [[nodiscard]]double  get_res_dir_test() const;
   [[nodiscard]]double get_res_rev_test() const;
@@ -38,25 +38,4 @@ class Cache{
 
 void shuffle(int *array, size_t n);
 
-//void print_result(Cache val1){
-//  std::string res = R"(investigaion:
-//travel_order: "direction"
-//  experiments:
-//    -experiment:
-//      number: 1
-//    input_data:
-//      buffer_size: "1mb"
-//    results:
-//      duration: )";
-//}
-
 #endif // INCLUDE_HEADER_HPP_
-//  investigaion:
-//    travel_order: "direction"
-//      experiments:
-//        -experiment:
-//          number: 1
-//        input_data:
-//          buffer_size: "1mb"
-//        results:
-//          duration: "1ns"
