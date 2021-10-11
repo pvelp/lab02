@@ -10,14 +10,14 @@ void Cache::filling() {
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_int_distribution<>dist(1, 10);
-  for (int i = 0; i < this->_len; ++i){
+  for (int i = 0; i < _len; ++i){
     _arr[i] = dist(gen);
   }
 }
 
 void Cache::warming_up() {
   [[maybe_unused]]int k = 0;
-  for (int i = 0; i < this->_len; i += 16) {
+  for (int i = 0; i < _len; i += step) {
     k = _arr[i];
   }
 }
@@ -26,8 +26,8 @@ void Cache::direction_test() {
   [[maybe_unused]]int k = 0;
   clock_t start;
   start = clock();
-  for (int j = 0; j < 1000; ++j){
-    for (int i = 0; i < this->_len; i += 16) {
+  for (int j = 0; j < num_of_steps; ++j){
+    for (int i = 0; i < _len; i += step) {
       k = _arr[i];
     }
   }
@@ -39,8 +39,8 @@ void Cache::reverse_test() {
   [[maybe_unused]]int k = 0;
   clock_t start;
   start = clock();
-  for (int j = 0; j < 1000; ++j){
-    for (int i = this->_len-1; i >= 0; i-=16){
+  for (int j = 0; j < num_of_steps; ++j){
+    for (int i = _len-1; i >= 0; i-=step){
       k = _arr[i];
     }
   }
@@ -66,15 +66,15 @@ void shuffle(int *array, size_t n)
 
 void Cache::random_test() {
   int* val = reinterpret_cast<int*>(malloc(sizeof (int) * (_len/16)));
-  for (int i = 0; i < _len; i+=16){
+  for (int i = 0; i < _len; i+=step){
     val[i] = i;
   }
   [[maybe_unused]]int k;
-  shuffle(val, _len/16);
+  shuffle(val, _len/step);
   clock_t start;
   start = clock();
-  for (int j = 0; j < 1000; ++j){
-    for (int i = 0; i < this->_len; ++i){
+  for (int j = 0; j < num_of_steps; ++j){
+    for (int i = 0; i < _len; ++i){
       k = _arr[val[i]];
     }
   }
@@ -83,12 +83,12 @@ void Cache::random_test() {
 }
 
 void Cache::experiment() {
-  this->_arr = reinterpret_cast<int*>(malloc(sizeof(int) * this->_len));
-  this->filling();
-  this->warming_up();
-  this->direction_test();
-  this->reverse_test();
-  this->random_test();
+  _arr = reinterpret_cast<int*>(malloc(sizeof(int) * this->_len));
+  filling();
+  warming_up();
+  direction_test();
+  reverse_test();
+  random_test();
 }
 
 double Cache::get_res_dir_test() const {
@@ -102,5 +102,5 @@ double Cache::get_res_rand_test() const{
 }
 
 void Cache::delete_arr() {
-  delete(this->_arr);
+  delete(_arr);
 }

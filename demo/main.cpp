@@ -2,7 +2,7 @@
 
 int main() {
   Cache *tests = (Cache*)(malloc(sizeof(Cache)*9));
-  int *values = (int*)(malloc)(sizeof (int)*9);
+  int *values = (int*)(malloc(sizeof (int)*9));
   int k = 16;
   for (int i = 0; i < 8; ++i){
     values[i] = pow(2, k)/4;
