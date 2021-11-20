@@ -1,7 +1,7 @@
 // Copyright 2021 pvelp <toschakovpv@yandex.ru>
 
-#ifndef INCLUDE_HEADER_HPP_
-#define INCLUDE_HEADER_HPP_
+#ifndef HEADER_HPP_
+#define HEADER_HPP_
 
 #include <iostream>
 #include <ctime>
@@ -35,5 +35,8 @@ class Cache {
 };
 
 void shuffle(int *array, size_t n);
+int count(const int a, const int b);
+void filling_arr(int *arr, const int& size, int& val);
+void print(int *arr, const int& size, std::ostream &os1);
 
 #endif // INCLUDE_HEADER_HPP_
