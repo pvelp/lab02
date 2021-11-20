@@ -1,7 +1,7 @@
 // Copyright 2021 pvelp <toschakovpv@yandex.ru>
 
-#ifndef HEADER_HPP_
-#define HEADER_HPP_
+#ifndef INCLUDE_HEADER_HPP_
+#define INCLUDE_HEADER_HPP_
 
 #include <iostream>
 #include <ctime>
