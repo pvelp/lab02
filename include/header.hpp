@@ -10,7 +10,7 @@
 #include <cmath>
 
 
-class Cache{
+class Cache {
  private:
   int *_arr;
   int _len;
@@ -22,19 +22,21 @@ class Cache{
   void direction_test();
   void reverse_test();
   void random_test();
-
+  const int step = 16;
+  const int num_of_steps = 1000;
 
  public:
   explicit Cache(int len);
   void experiment();
-  [[nodiscard]]double  get_res_dir_test() const;
-  [[nodiscard]]double get_res_rev_test() const;
-  [[nodiscard]]double get_res_rand_test() const;
+  [[nodiscard]] double get_res_dir_test() const;
+  [[nodiscard]] double get_res_rev_test() const;
+  [[nodiscard]] double get_res_rand_test() const;
   void delete_arr();
-
-//  void print_results();
 };
 
 void shuffle(int *array, size_t n);
+int count(const int a, const int b);
+void filling_arr(int *arr, const int& size, int& val);
+void print(int *arr, const int& size, std::ostream &os1);
 
 #endif // INCLUDE_HEADER_HPP_
